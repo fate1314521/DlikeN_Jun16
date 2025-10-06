@@ -1,0 +1,675 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(to bottom, #050a14, #0d1930);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 背景星星效果 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 180px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 30px 110px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 110px 190px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 180px 150px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+    animation: starPulse 15s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+/* 装饰元素 - 星星 */
+.decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+.star:nth-child(1) {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.star:nth-child(2) {
+    top: 25%;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
+.star:nth-child(3) {
+    top: 40%;
+    left: 15%;
+    animation-delay: 1s;
+}
+
+.star:nth-child(4) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 1.5s;
+}
+
+.star:nth-child(5) {
+    top: 80%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* 月亮效果 */
+#moon {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at 30% 30%, #fff9e6, #f0e68c 70%, #e6d75a);
+    border-radius: 50%;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    animation: float 8s ease-in-out infinite, glowPulse 4s ease-in-out infinite alternate;
+    box-shadow: 
+        0 0 50px rgba(255, 250, 205, 0.7),
+        0 0 100px rgba(255, 250, 205, 0.4),
+        0 0 150px rgba(255, 250, 205, 0.2);
+}
+
+/* 月亮上的阴影和纹理 */
+#moon::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle at 60% 60%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.07));
+    border-radius: 50%;
+}
+
+#moon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.04) 5px, transparent 5px),
+        radial-gradient(circle at 60% 40%, rgba(0, 0, 0, 0.04) 8px, transparent 8px),
+        radial-gradient(circle at 40% 70%, rgba(0, 0, 0, 0.04) 6px, transparent 6px),
+        radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.04) 4px, transparent 4px),
+        radial-gradient(circle at 10% 60%, rgba(0, 0, 0, 0.03) 3px, transparent 3px);
+    border-radius: 50%;
+}
+
+/* 月亮呼吸效果 */
+@keyframes glowPulse {
+    0% {
+        box-shadow: 
+            0 0 50px rgba(255, 250, 205, 0.7),
+            0 0 100px rgba(255, 250, 205, 0.4),
+            0 0 150px rgba(255, 250, 205, 0.2);
+    }
+    100% {
+        box-shadow: 
+            0 0 60px rgba(255, 250, 205, 0.9),
+            0 0 120px rgba(255, 250, 205, 0.6),
+            0 0 180px rgba(255, 250, 205, 0.4);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+/* 主内容区样式 */
+.message-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin: 1rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffd700;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+    }
+    100% {
+        text-shadow: 0 2px 20px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.message p {
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.message p:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.message p:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.message p:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.message p:nth-child(4) {
+    animation-delay: 2s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 头像和FOREVER LOVE样式 */
+.gifts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+}
+
+/* 头像容器 */
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* 头像样式 */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.5),
+        0 10px 25px rgba(0, 0, 0, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.avatar:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.8),
+        0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 头像图片 */
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 头像名字样式 */
+.avatar-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 1px 5px rgba(255, 215, 0, 0.5);
+    animation: glow 2s infinite alternate;
+}
+
+/* 中间的FOREVER LOVE容器 */
+.forever-love-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+/* FOREVER LOVE Canvas样式 */
+.forever-love-canvas {
+    display: block;
+    width: 300px;
+    height: 100px;
+    position: relative;
+    background: transparent;
+    z-index: 1;
+}
+
+/* 粒子效果容器 */
+.particle-effect {
+    width: 300px;
+    height: 100px;
+    position: relative;
+    overflow: visible;
+    z-index: 2;
+}
+
+/* 头像和文字动画 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 107, 107, 0.7);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 107, 107, 1), 0 0 30px rgba(255, 107, 107, 0.5);
+        transform: scale(1.05);
+    }
+}
+
+/* 签名样式 */
+.signature {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #ffd700;
+    opacity: 0;
+    animation: fadeIn 2s forwards 2.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 - 统一整合所有媒体查询 */
+/* 平板和大屏手机优化 */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    /* 月亮尺寸适配 */
+    #moon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* 标题文字大小 */
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* 消息容器内边距 */
+    .message-container {
+        padding: 1rem;
+        max-width: 95%;
+    }
+    
+    /* 头像和FOREVER LOVE容器布局 */
+    .gifts {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    /* 头像尺寸适配 */
+    .avatar {
+        width: 90px;
+        height: 90px;
+    }
+    
+    /* 头像名字大小 */
+    .avatar-name {
+        font-size: 1rem;
+    }
+    
+    /* FOREVER LOVE文字大小 */
+    .forever-love-text {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* 小屏幕手机优化 */
+@media (max-width: 480px) {
+    .container {
+        padding: 0.8rem;
+    }
+    
+    /* 月亮尺寸适配 */
+    #moon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    /* 标题文字大小 */
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    /* 消息容器内边距 */
+    .message-container {
+        padding: 0.8rem;
+        max-width: 98%;
+    }
+    
+    /* 头像和FOREVER LOVE容器布局 */
+    .gifts {
+        gap: 0.8rem;
+    }
+    
+    /* 头像尺寸适配 */
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    /* 头像名字大小 */
+    .avatar-name {
+        font-size: 0.9rem;
+    }
+    
+    /* FOREVER LOVE文字大小 */
+    .forever-love-text {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* 新增动画效果 */
+@keyframes subtleGlow {
+    0%, 100% {
+        box-shadow: 
+            0 10px 20px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(255, 107, 107, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 12px 24px rgba(0, 0, 0, 0.25),
+            0 0 40px rgba(255, 107, 107, 0.4);
+    }
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg) scale(1.15);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.15);
+    }
+}
+
+@keyframes pulseCenter {
+    0%, 100% {
+        opacity: 0.7;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        opacity: 0.9;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+}
+
+@keyframes pulseRibbon {
+    0%, 100% {
+        transform: scale(1) translateY(-10px) translateZ(3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.05) translateY(-10px) translateZ(3px);
+        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* 全局页面美化效果 */
+
+/* 主内容容器悬浮效果增强 */
+.message-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 30px rgba(0, 0, 0, 0.25),
+        0 0 50px rgba(255, 215, 0, 0.1);
+}
+
+/* 文字动画效果增强 */
+.message p {
+    transition: all 0.5s ease;
+}
+
+.message p:hover {
+    transform: translateY(-2px);
+    color: #ffd700;
+    text-shadow: 0 1px 5px rgba(255, 215, 0, 0.3);
+}
+
+/* 页面滚动时的平滑效果 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 背景星星效果增强 */
+.star {
+    animation: twinkle 3s infinite alternate, float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+/* 提升整体3D效果 */
+.gifts {
+    perspective: 1500px;
+}
+
+/* 小屏幕手机优化 */
+@media (max-width: 480px) {
+    #moon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .message {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    .message-container {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+    
+    /* 月饼和礼物调整 */
+    .gifts {
+        gap: 1rem;
+    }
+    
+    .mooncake {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .gift-box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    /* 装饰元素尺寸调整 */
+    .mooncake-rim {
+        width: 90px;
+        height: 90px;
+        top: -3px;
+        left: -3px;
+    }
+    
+    .gift-box-belt.horizontal,
+    .gift-box-belt.vertical {
+        height: 15px;
+        width: 15px;
+    }
+    
+    .gift-box-bow {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* 头像提醒文字大小 */
+    .avatar-reminder {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* 水平旋转设备优化 */
+@media (max-height: 480px) and (orientation: landscape) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .message-container {
+        padding: 0.8rem;
+        max-width: 90%;
+    }
+    
+    .gifts {
+        gap: 0.8rem;
+    }
+    
+    /* 头像尺寸适配 */
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    /* 头像名字大小 */
+    .avatar-name {
+        font-size: 0.8rem;
+    }
+    
+    /* FOREVER LOVE文字大小 */
+    .forever-love-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* 加载动画效果 */
+@keyframes fadeInLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeInLoad 1s ease-out;
+}
