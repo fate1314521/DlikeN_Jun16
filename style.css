@@ -328,7 +328,7 @@ h1 {
 /* FOREVER LOVE Canvas样式 */
 .forever-love-canvas {
     display: block;
-    width: 300px;
+    width: 200px;
     height: 100px;
     position: relative;
     background: transparent;
@@ -337,7 +337,7 @@ h1 {
 
 /* 粒子效果容器 */
 .particle-effect {
-    width: 300px;
+    width: 200px;
     height: 100px;
     position: relative;
     overflow: visible;
@@ -672,4 +672,5 @@ html {
 
 .container {
     animation: fadeInLoad 1s ease-out;
+
 }
