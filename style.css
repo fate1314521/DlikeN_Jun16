@@ -321,14 +321,14 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0rem;
     position: relative;
 }
 
 /* FOREVER LOVE Canvas样式 */
 .forever-love-canvas {
     display: block;
-    width: 150px;
+    width: 130px;
     height: 100px;
     position: relative;
     background: transparent;
@@ -337,7 +337,7 @@ h1 {
 
 /* 粒子效果容器 */
 .particle-effect {
-    width: 150px;
+    width: 130px;
     height: 100px;
     position: relative;
     overflow: visible;
@@ -674,4 +674,5 @@ html {
     animation: fadeInLoad 1s ease-out;
 
 }
+
 
