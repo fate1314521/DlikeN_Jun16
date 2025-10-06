@@ -91,13 +91,13 @@ function addForeverLoveEffect() {
         
         // 设置文字样式
         ctx.fillStyle = '#ff6b6b';
-        ctx.font = 'bold 36px "Microsoft YaHei", sans-serif';
+        ctx.font = 'bold 28px "Microsoft YaHei", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         
         // 绘制文字
         const texts = ['FOREVER', 'LOVE'];
-        const lineHeight = 45; // 增大行高以适应更大的显示区域和文字
+        const lineHeight = 40; // 增大行高以适应更大的显示区域和文字
         
         texts.forEach((text, index) => {
             const x = canvas.clientWidth / 2;
@@ -108,7 +108,7 @@ function addForeverLoveEffect() {
             const tempCtx = tempCanvas.getContext('2d');
             
             // 先设置字体样式，再进行测量
-            tempCtx.font = 'bold 36px "Microsoft YaHei", sans-serif';
+            tempCtx.font = 'bold 28px "Microsoft YaHei", sans-serif';
             tempCtx.fillStyle = '#ff6b6b';
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
@@ -119,7 +119,7 @@ function addForeverLoveEffect() {
             tempCanvas.height = lineHeight * 2;
             
             // 重新设置所有上下文属性（因为调整canvas尺寸会重置上下文）
-            tempCtx.font = 'bold 36px "Microsoft YaHei", sans-serif';
+            tempCtx.font = 'bold 28px "Microsoft YaHei", sans-serif';
             tempCtx.fillStyle = '#ff6b6b';
             tempCtx.textAlign = 'center';
             tempCtx.textBaseline = 'middle';
@@ -2523,4 +2523,5 @@ function setupAvatarClickReminder() {
 }
 
 // 当页面加载完成后初始化
+
 window.addEventListener('DOMContentLoaded', init);
